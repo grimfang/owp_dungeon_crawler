@@ -1,0 +1,7 @@
+from distributed.DistributedPlayer import DistributedPlayer
+//from distributed import DistributedEnemy/AI
+from distributed import DistributedLevel/AI
+
+dclass DistributedPlayer: DistributedSmoothNode { }
+//dclass DistributedEnemy: DistributedSmoothNode { }
+dclass DistributedLevel: DistributedObject { };

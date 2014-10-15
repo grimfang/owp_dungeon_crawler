@@ -11,11 +11,26 @@ class Main(ShowBase):
 
 		## Basic events
 		self.acceptAll()
-		
+
+	def host(self):
+		"""starting the server"""
+		# instantiate the server
+		from server.server import DungeonServerRepository
+		self.sr = DungeonServerRepository()
+		# instantiate the Level
+		from client.client import LevelAIRepository
+		print "start the Level AI"
+		self.levelAI = LevelAIRepository()
+
+	def join(self):
+		from client.client import Client
+		self.client = Client("127.0.0.1")
 
 	def acceptAll(self):
 		"""Accept all events that have to be catched by the main class"""
 		self.accept("escape", self.quit)
+		self.accept("f1", self.host)
+		self.accept("f2", self.join)
 
 
 	def quit(self):
