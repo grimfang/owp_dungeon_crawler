@@ -2,8 +2,10 @@
 from direct.showbase.DirectObject import DirectObject
 from direct.distributed.ClientRepository import ClientRepository
 from pandac.PandaModules import URLSpec
-# the client repository class
+
+
 class DungeonClientRepository(ClientRepository):
+    """the main client repository class"""
     def __init__(self):
         # list of all needed .dc files
         dcFileNames = ['distributed/direct.dc', 'distributed/net.dc']
@@ -11,7 +13,7 @@ class DungeonClientRepository(ClientRepository):
         # machine with the dc filenames
         ClientRepository.__init__(self, dcFileNames = dcFileNames)
 
-# the main client class
+
 class Client(DirectObject):
     """The main client class, which contains all the logic
     and stuff you can see in the application and handles the
@@ -52,11 +54,11 @@ class Client(DirectObject):
         print "server connection done"
         self.player = self.cr.createDistributedObject(
             className = "DistributedPlayer", zoneId = 1)
-		#TODO implement all the things
+        #TODO implement all the things
 
 
-# a small client only for the Server, which holds the Level model
 class LevelAIRepository(ClientRepository):
+    """a small client only for the Server, which holds the Level model"""
     def __init__(self):
         dcFileNames = ['distributed/direct.dc', 'distributed/net.dc']
 

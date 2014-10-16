@@ -1,4 +1,17 @@
+from pandac.PandaModules import loadPrcFileData
+loadPrcFileData("",
+"""
+    window-title GrimFang OWP - Dungeon Crawler
+    cursor-hidden 0
+    show-frame-rate-meter 1
+	#win-size 1024 600
+    #fullscreen #t
+    model-path $MAIN_DIR/assets/
+"""
+)
+
 from direct.showbase.ShowBase import ShowBase
+from gui.MainMenu import MainMenu
 
 class Main(ShowBase):
 	"""Main class of the application
@@ -8,6 +21,8 @@ class Main(ShowBase):
 		"""initialise the engine"""
 		ShowBase.__init__(self)
 		self.setBackgroundColor(0,0,0)
+
+		self.mainMenu = MainMenu()
 
 		## Basic events
 		self.acceptAll()
@@ -22,15 +37,15 @@ class Main(ShowBase):
 		print "start the Level AI"
 		self.levelAI = LevelAIRepository()
 
-	def join(self):
+	def join(self, ip):
 		from client.client import Client
-		self.client = Client("127.0.0.1")
+		self.client = Client(ip)
 
 	def acceptAll(self):
 		"""Accept all events that have to be catched by the main class"""
 		self.accept("escape", self.quit)
-		self.accept("f1", self.host)
-		self.accept("f2", self.join)
+		self.accept("start_server", self.host)
+		self.accept("start_client", self.join)
 
 
 	def quit(self):

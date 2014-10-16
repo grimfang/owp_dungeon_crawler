@@ -1,0 +1,9 @@
+The line <Scalar> wrap { CLAMP } has to be added to all textures. Otherwise
+they may not be displayed correctly.
+
+Should look like this in the end:
+
+<Texture> button_rollover {
+  button_rollover.png
+  <Scalar> wrap { CLAMP }
+}
