@@ -1,0 +1,117 @@
+<Comment> {
+  "egg-texture-cards -o button_map.egg -g -1.33,1.33,-0.5,0.5 -p 200,75 button_ready.png button_click.png button_rollover.png button_disabled.png"
+}
+<Texture> button_rollover {
+  button_rollover.png
+  <Scalar> wrap { CLAMP }
+}
+<Texture> button_ready {
+  button_ready.png
+  <Scalar> wrap { CLAMP }
+}
+<Texture> button_disabled {
+  button_disabled.png
+  <Scalar> wrap { CLAMP }
+}
+<Texture> button_click {
+  button_click.png
+  <Scalar> wrap { CLAMP }
+}
+<Group> {
+  <Switch> { 1 }
+  <Scalar> fps { 2 }
+  <VertexPool> vpool {
+    <Vertex> 0 {
+      -1.33 0.5 0
+      <UV> { 0 1 }
+    }
+    <Vertex> 1 {
+      -1.33 -0.5 0
+      <UV> { 0 0 }
+    }
+    <Vertex> 2 {
+      1.33 -0.5 0
+      <UV> { 1 0 }
+    }
+    <Vertex> 3 {
+      1.33 0.5 0
+      <UV> { 1 1 }
+    }
+    <Vertex> 4 {
+      -1.33 0.5 0
+      <UV> { 0 1 }
+    }
+    <Vertex> 5 {
+      -1.33 -0.5 0
+      <UV> { 0 0 }
+    }
+    <Vertex> 6 {
+      1.33 -0.5 0
+      <UV> { 1 0 }
+    }
+    <Vertex> 7 {
+      1.33 0.5 0
+      <UV> { 1 1 }
+    }
+    <Vertex> 8 {
+      -1.33 0.5 0
+      <UV> { 0 1 }
+    }
+    <Vertex> 9 {
+      -1.33 -0.5 0
+      <UV> { 0 0 }
+    }
+    <Vertex> 10 {
+      1.33 -0.5 0
+      <UV> { 1 0 }
+    }
+    <Vertex> 11 {
+      1.33 0.5 0
+      <UV> { 1 1 }
+    }
+    <Vertex> 12 {
+      -1.33 0.5 0
+      <UV> { 0 1 }
+    }
+    <Vertex> 13 {
+      -1.33 -0.5 0
+      <UV> { 0 0 }
+    }
+    <Vertex> 14 {
+      1.33 -0.5 0
+      <UV> { 1 0 }
+    }
+    <Vertex> 15 {
+      1.33 0.5 0
+      <UV> { 1 1 }
+    }
+  }
+  <Group> button_ready {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { button_ready }
+      <VertexRef> { 0 1 2 3 <Ref> { vpool } }
+    }
+  }
+  <Group> button_click {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { button_click }
+      <VertexRef> { 4 5 6 7 <Ref> { vpool } }
+    }
+  }
+  <Group> button_rollover {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { button_rollover }
+      <VertexRef> { 8 9 10 11 <Ref> { vpool } }
+    }
+  }
+  <Group> button_disabled {
+    <Polygon> {
+      <RGBA> { 1 1 1 1 }
+      <TRef> { button_disabled }
+      <VertexRef> { 12 13 14 15 <Ref> { vpool } }
+    }
+  }
+}
