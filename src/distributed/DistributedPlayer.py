@@ -8,6 +8,7 @@ class DistributedPlayer(DistributedSmoothNode):
         NodePath.__init__(self, "Model")
         self.model = base.loader.loadModel('smiley.egg')
         self.model.reparentTo(self)
+        #TODO: setup mouse watcher for point and click action
 
     def generate(self):
         DistributedSmoothNode.generate(self)

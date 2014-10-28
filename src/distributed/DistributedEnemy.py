@@ -8,6 +8,7 @@ class DistributedEnemy(DistributedSmoothNode):
         NodePath.__init__(self, "Model")
         self.model = base.loader.loadModel('smiley.egg')
         self.model.reparentTo(self)
+        #TODO: setup basic AI system with PandAI
 
     def generate(self):
         DistributedSmoothNode.generate(self)

@@ -14,6 +14,7 @@ class DistributedLevel(DistributedObject):
         self.model = loader.loadModel('environment')
         self.model.setZ(0)
         print "model loaded"
+        #TODO: check how to load multiple levels and set players in specific levels!
 
     def announceGenerate(self):
         """ This method is called after generate(), after all of the
