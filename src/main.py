@@ -2,18 +2,24 @@ from pandac.PandaModules import loadPrcFileData
 loadPrcFileData("",
 """
     window-title GrimFang OWP - Dungeon Crawler
-    cursor-hidden 0
-    show-frame-rate-meter 1
+    cursor-hidden #f
     #win-size 1024 600
     #fullscreen #t
     model-path $MAIN_DIR/assets/
+
+    # DEBUGGING
+    #want-directtools  #t
+    #want-tk           #t
+    show-frame-rate-meter 1
 """
 )
 
+import sys
 from direct.showbase.ShowBase import ShowBase
 from gui.MainMenu import MainMenu
 from gui.HostMenu import HostMenu
 import socket
+from panda3d.core import WindowProperties
 
 class Main(ShowBase):
     """Main class of the application
@@ -22,11 +28,20 @@ class Main(ShowBase):
     def __init__(self):
         """initialise the engine"""
         ShowBase.__init__(self)
-        self.setBackgroundColor(0,0,0)
+        #self.setBackgroundColor(0,0,0)
 
         self.mainMenu = MainMenu()
         self.hostMenu = HostMenu()
         self.hostMenu.hide()
+
+        # set the mouse cursor
+        base.win.clearRejectedProperties()
+        props = WindowProperties()
+        if sys.platform.startswith('linux'):
+            props.setCursorFilename("Cursor.x11")
+        else:
+            props.setCursorFilename("Cursor.ico")
+        base.win.requestProperties(props)
 
         ## Basic events
         self.acceptAll()
@@ -38,19 +53,22 @@ class Main(ShowBase):
         from server.server import DungeonServerRepository
         self.sr = DungeonServerRepository()
         # instantiate the Level
-        from client.client import LevelAIRepository
-        base.messenger.send("addLog", ["start the Level AI"])
-        self.levelAI = LevelAIRepository()
+        from server.server import ServerAIRepository
+        base.messenger.send("addLog", ["start the Server AI"])
+        self.serverAI = ServerAIRepository()
+        # TODO: change this to get the IP without a ping to G
         ip = [(s.connect(('8.8.8.8', 80)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
         base.messenger.send("addLog",
             ["Server at: {} - Running - Version 1.0".format(ip)])
 
     def stopHost(self):
+        # TODO: How to stop the server???
         self.mainMenu.show()
         del self.levelAI
         self.levelAI = None
         del self.sr
         self.sr = None
+        print taskMgr.getAllTasks()
 
     def join(self, ip):
         from client.client import Client

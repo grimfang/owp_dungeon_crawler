@@ -38,12 +38,12 @@ class HostMenu(DirectObject):
         self.txtinfo.reparentTo(self.logFrame.getCanvas())
 
         # create a close Server button
-        self.btnHostPos = Vec3(0.4, 0, 0.2)
-        self.btnHostScale = 0.25
+        self.btnBackPos = Vec3(0.4, 0, 0.2)
+        self.btnBackScale = 0.25
         self.btnBack = DirectButton(
             # Scale and position
-            scale = self.btnHostScale,
-            pos = self.btnHostPos,
+            scale = self.btnBackScale,
+            pos = self.btnBackPos,
             # Text
             text = "Quit Server",
             text_scale = 0.45,
@@ -93,3 +93,5 @@ class HostMenu(DirectObject):
         self.logFrame["frameSize"] = (
             0, base.a2dRight * 2,
             (base.a2dBottom+.2) * 2, 0)
+        #self.btnBack.setPos(Vec3(0.4, 0, 0.2))
+        #self.btnBack.setPos(Vec3(-0.8, 0, -0.6))

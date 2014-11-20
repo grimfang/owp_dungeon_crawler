@@ -2,7 +2,9 @@ from direct.gui.DirectGui import DirectButton
 from direct.gui.DirectGui import DirectEntry
 from direct.gui.DirectGui import DirectFrame
 from direct.gui.DirectGui import DirectLabel
+from direct.gui.DirectGui import OkDialog
 from direct.gui.OnscreenImage import OnscreenImage
+from direct.gui.DirectCheckBox import DirectCheckBox
 from direct.showbase.DirectObject import DirectObject
 from panda3d.core import TextNode
 from panda3d.core import Vec3
@@ -165,8 +167,29 @@ class MainMenu(DirectObject):
         self.btnExit.setTransparency(1)
         self.btnExit.reparentTo(self.frameMain)
 
+        # create a mute checkbox
+        self.cbVolumeMute = DirectCheckBox(
+            # set size
+            scale = (0.1, 0.1, 0.1),
+            frameSize = (-1, 1, 1, -1),
+            # functionality and visuals
+            command = self.cbVolumeMute_CheckedChanged,
+            isChecked = True,
+            checkedImage = "gui/SoundSwitch_off.png",
+            uncheckedImage = "gui/SoundSwitch_on.png",
+            # mouse behaviour
+            relief = 0,
+            pressEffect = False,
+            rolloverSound = None,
+            clickSound = None
+            )
+        self.cbVolumeMute.setTransparency(1)
+        self.cbVolumeMute.reparentTo(self.frameMain)
+        self.cbVolumeMute.commandFunc(None)
+
         # catch window resizes and recalculate the aspectration
-        self.accept('window-event', self.recalcAspectRatio)
+        self.accept("window-event", self.recalcAspectRatio)
+        self.accept("showerror", self.showError)
 
         # show the menu right away
         self.show()
@@ -183,6 +206,16 @@ class MainMenu(DirectObject):
         self.hide()
         base.messenger.send("start_client", [ip])
 
+    def showError(self, msg):
+        self.show()
+        self.dialog = OkDialog(
+            dialogName="ErrorDialog",
+            text="Error: {}".format(msg),
+            command=self.closeDialog)
+
+    def closeDialog(self, args):
+        self.dialog.hide()
+
     def show(self):
         """Show the GUI"""
         self.frameMain.show()
@@ -197,6 +230,12 @@ class MainMenu(DirectObject):
         """Function to clear the text that was previously entered in the
         IP input field"""
         self.txtIP.enterText("")
+
+    def cbVolumeMute_CheckedChanged(self, checked):
+        if bool(checked):
+            base.disableAllAudio()
+        else:
+            base.enableAllAudio()
 
     def recalcAspectRatio(self, window):
         """get the new aspect ratio to resize the mainframe"""
@@ -218,4 +257,5 @@ class MainMenu(DirectObject):
         # calculate new position/size/whatever of the gui items
         self.title.setPos(0.0, 0.0, base.a2dTop - self.textscale)
         self.menuBackground.setScale(1.0 * aspX, 1.0, 1.0 * aspY)
+        self.cbVolumeMute.setPos(base.a2dRight - 0.15, 0, base.a2dBottom + 0.15)
 

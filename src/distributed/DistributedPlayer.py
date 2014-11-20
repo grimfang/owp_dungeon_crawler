@@ -1,14 +1,15 @@
+from direct.showbase.DirectObject import DirectObject
 from direct.distributed.DistributedSmoothNode import DistributedSmoothNode
 from pandac.PandaModules import NodePath
 
 # Distributed Player
-class DistributedPlayer(DistributedSmoothNode):
+class DistributedPlayer(DistributedSmoothNode, DirectObject):
     def __init__(self, cr):
         DistributedSmoothNode.__init__(self, cr)
         NodePath.__init__(self, "Model")
         self.model = base.loader.loadModel('smiley.egg')
         self.model.reparentTo(self)
-        #TODO: setup mouse watcher for point and click action
+        self.accept("clickPosition", self.walkTo)
 
     def generate(self):
         DistributedSmoothNode.generate(self)
@@ -27,3 +28,9 @@ class DistributedPlayer(DistributedSmoothNode):
     def delete(self):
         self.model = None
         DistributedSmoothNode.delete(self)
+
+    def walkTo(self, pos):
+        self.model.lookAt(pos)
+        #moveInterval = self.model.posInterval(1, pos)
+        #moveInterval.start()
+        self.setPos(pos)

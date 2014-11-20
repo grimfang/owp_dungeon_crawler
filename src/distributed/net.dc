@@ -4,4 +4,24 @@ from distributed import DistributedLevel/AI
 
 dclass DistributedPlayer: DistributedSmoothNode { }
 //dclass DistributedEnemy: DistributedSmoothNode { }
-dclass DistributedLevel: DistributedObject { };
+
+struct Point2 {
+    uint16 x;
+    uint16 y;
+};
+
+struct Point3 {
+    int16 / 10 x;
+    int16 / 10 y;
+    int16 / 10 z;
+};
+
+struct Point3Hpr {
+    int16 % 360 / 10 h;
+    int16 % 360 / 10 p;
+    int16 % 360 / 10 r;
+};
+
+dclass DistributedLevel: DistributedObject {
+    checkMousePos(Point2 mpos, Point3 camPos, Point3Hpr camHpr);
+};

@@ -39,50 +39,30 @@ class Client(DirectObject):
 
     def connectFailure(self, statusCode, statusString):
         """ some error occured while try to connect to the server """
-        raise Exception('Failed to connect to %s: %s.'
-                        % (self.url, statusString))
+        # send a message, that should show the client the error message
+        base.messenger.send(
+            "showerror",
+            ["Failed to connect to %s: %s." % (self.url, statusString)])
 
     def connectSuccess(self):
         """ Successfully connected.  But we still can't really do
         anything until we've got the doID range. """
-        print 'Connection established, waiting for server.'
-        # now wait until the server sends us the createReady message
-        self.acceptOnce('createReady', self.createReady)
+        print "Connection established, waiting for server."
+        self.cr.setInterestZones([1])
+        self.acceptOnce('gotTimeSync', self.syncReady)
+
+    def syncReady(self):
+        """ Now we've got the TimeManager manifested, and we're in
+        sync with the server time. Now we can enter the world. Check
+        to see if we've received our doIdBase yet. """
+        if self.cr.haveCreateAuthority():
+            self.createReady()
+        else:
+            # Not yet, keep waiting a bit longer.
+            self.acceptOnce('createReady', self.createReady)
 
     def createReady(self):
         """ Now we're ready to go! """
         print "server connection done"
         self.player = self.cr.createDistributedObject(
             className = "DistributedPlayer", zoneId = 1)
-        #TODO implement all the things
-
-
-class LevelAIRepository(ClientRepository):
-    """a small client only for the Server, which holds the Level model"""
-    def __init__(self):
-        dcFileNames = ['distributed/direct.dc', 'distributed/net.dc']
-
-        ClientRepository.__init__(self, dcFileNames = dcFileNames,
-                                  dcSuffix = 'AI')
-
-        tcpPort = base.config.GetInt('server-port', 4400)
-        url = URLSpec('http://127.0.0.1:%s' % (tcpPort))
-        self.connect([url],
-                     successCallback = self.connectSuccess,
-                     failureCallback = self.connectFailure)
-
-    def connectFailure(self, statusCode, statusString):
-        raise StandardError, statusString
-
-    def connectSuccess(self):
-        """ Successfully connected.  But we still can't really do
-        anything until we've got the doID range. """
-        print "start now"
-        self.acceptOnce('createReady', self.createReady)
-
-    def createReady(self):
-        """ Now we're ready to go! """
-        print "create the level"
-        self.level = self.createDistributedObject(
-            className = 'DistributedLevelAI', zoneId = 1)
-        print "level finished"

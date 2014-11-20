@@ -7,3 +7,4 @@ class DistributedLevelAI(DistributedObjectAI):
 
     def __init__(self, cr):
         DistributedObjectAI.__init__(self, cr)
+        base.messenger.send("addLog", ["Distributed Level AI initialised"])
