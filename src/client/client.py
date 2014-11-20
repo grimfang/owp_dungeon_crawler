@@ -66,3 +66,15 @@ class Client(DirectObject):
         print "server connection done"
         self.player = self.cr.createDistributedObject(
             className = "DistributedPlayer", zoneId = 1)
+
+        self.player.startPosHprBroadcast()
+
+        # Unsure?? This maybe a good place to run a precheck to get
+        # everything ready or something like that :P
+        self.accept("clickPosition", self.walkTo)
+
+    def walkTo(self, pos):
+        self.player.lookAt(pos)
+        #moveInterval = self.model.posInterval(1, pos)
+        #moveInterval.start()
+        self.player.setPos(pos)

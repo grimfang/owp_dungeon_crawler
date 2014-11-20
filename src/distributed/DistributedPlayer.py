@@ -9,7 +9,6 @@ class DistributedPlayer(DistributedSmoothNode, DirectObject):
         NodePath.__init__(self, "Model")
         self.model = base.loader.loadModel('smiley.egg')
         self.model.reparentTo(self)
-        self.accept("clickPosition", self.walkTo)
 
     def generate(self):
         DistributedSmoothNode.generate(self)
@@ -28,9 +27,3 @@ class DistributedPlayer(DistributedSmoothNode, DirectObject):
     def delete(self):
         self.model = None
         DistributedSmoothNode.delete(self)
-
-    def walkTo(self, pos):
-        self.model.lookAt(pos)
-        #moveInterval = self.model.posInterval(1, pos)
-        #moveInterval.start()
-        self.setPos(pos)
