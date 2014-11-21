@@ -1,0 +1,177 @@
+<CoordinateSystem> { Z-Up }
+
+<Comment> {
+  "egg-trans -tbnall -o /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/owp_dungeon_crawler/src/assets/generator/stairs.egg /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/owp_dungeon_crawler/src/assets/generator/stairs.egg"
+}
+<Material> Material {
+  <Scalar> diffr { 0.16391 }
+  <Scalar> diffg { 0.088559 }
+  <Scalar> diffb { 0.64 }
+  <Scalar> emitr { 0 }
+  <Scalar> emitg { 0 }
+  <Scalar> emitb { 0 }
+  <Scalar> specr { 0.5 }
+  <Scalar> specg { 0.5 }
+  <Scalar> specb { 0.5 }
+  <Scalar> shininess { 12.5 }
+}
+<Group> stairs {
+  <Transform> {
+    <Matrix4> {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      0 0 0 1
+    }
+  }
+  <VertexPool> stairs {
+    <Vertex> 0 {
+      -1 1 -0.69626
+    }
+    <Vertex> 1 {
+      1 1 -0.69626
+    }
+    <Vertex> 2 {
+      1 1 -1
+    }
+    <Vertex> 3 {
+      -1 1 -1
+    }
+    <Vertex> 4 {
+      1 0.602335 -0.69626
+    }
+    <Vertex> 5 {
+      -1 0.602335 -0.69626
+    }
+    <Vertex> 6 {
+      -1 0.602335 -0.395942
+    }
+    <Vertex> 7 {
+      1 0.602335 -0.395942
+    }
+    <Vertex> 8 {
+      1 0.207315 -0.395942
+    }
+    <Vertex> 9 {
+      -1 0.207315 -0.395942
+    }
+    <Vertex> 10 {
+      -1 0.207315 -0.0956254
+    }
+    <Vertex> 11 {
+      1 0.207315 -0.0956254
+    }
+    <Vertex> 12 {
+      1 -0.195123 -0.0956254
+    }
+    <Vertex> 13 {
+      -1 -0.195123 -0.0956254
+    }
+    <Vertex> 14 {
+      1 -0.597562 0.204691
+    }
+    <Vertex> 15 {
+      -1 -0.597562 0.204691
+    }
+    <Vertex> 16 {
+      -1 -0.597562 0.505008
+    }
+    <Vertex> 17 {
+      1 -0.597562 0.505008
+    }
+    <Vertex> 18 {
+      -1 -0.195123 0.204691
+    }
+    <Vertex> 19 {
+      1 -0.195123 0.204691
+    }
+    <Vertex> 20 {
+      1 -1 0.505008
+    }
+    <Vertex> 21 {
+      -1 -1 0.505008
+    }
+    <Vertex> 22 {
+      1 -1 -1
+    }
+    <Vertex> 23 {
+      -1 -1 -1
+    }
+  }
+  <Polygon> {
+    <Normal> { 0 1 0 }
+    <MRef> { Material }
+    <VertexRef> { 0 1 2 3 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 0 1 }
+    <MRef> { Material }
+    <VertexRef> { 4 1 0 5 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 1 0 }
+    <MRef> { Material }
+    <VertexRef> { 4 5 6 7 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 0 1 }
+    <MRef> { Material }
+    <VertexRef> { 8 7 6 9 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 1 0 }
+    <MRef> { Material }
+    <VertexRef> { 8 9 10 11 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 0 1 }
+    <MRef> { Material }
+    <VertexRef> { 12 11 10 13 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 1 0 }
+    <MRef> { Material }
+    <VertexRef> { 14 15 16 17 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 1 0 }
+    <MRef> { Material }
+    <VertexRef> { 12 13 18 19 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 0 1 }
+    <MRef> { Material }
+    <VertexRef> { 14 19 18 15 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 0 1 }
+    <MRef> { Material }
+    <VertexRef> { 20 17 16 21 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 0 -1 }
+    <MRef> { Material }
+    <VertexRef> { 2 22 23 3 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 0 -1 0 }
+    <MRef> { Material }
+    <VertexRef> { 21 23 22 20 <Ref> { stairs } }
+  }
+  <Polygon> {
+    <Normal> { 1 0 0 }
+    <MRef> { Material }
+    <VertexRef> {
+      1 4 7 8 11 12 19 14 17 20 22 2
+      <Ref> { stairs }
+    }
+  }
+  <Polygon> {
+    <Normal> { -1 0 0 }
+    <MRef> { Material }
+    <VertexRef> {
+      6 5 0 3 23 21 16 15 18 13 10 9
+      <Ref> { stairs }
+    }
+  }
+}
