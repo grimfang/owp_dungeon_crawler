@@ -1,0 +1,65 @@
+<CoordinateSystem> { Z-Up }
+
+<Comment> {
+  "egg-trans -tbnall -o /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/gen/solid.egg /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/gen/solid.egg"
+}
+<Group> Solid {
+  <Transform> {
+    <Matrix4> {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      0 0 1.02964 1
+    }
+  }
+  <VertexPool> Solid {
+    <Vertex> 0 {
+      -1 -1 2.02964
+    }
+    <Vertex> 1 {
+      -1 1 2.02964
+    }
+    <Vertex> 2 {
+      -1 1 0.0296403
+    }
+    <Vertex> 3 {
+      -1 -1 0.0296403
+    }
+    <Vertex> 4 {
+      1 1 2.02964
+    }
+    <Vertex> 5 {
+      1 1 0.0296403
+    }
+    <Vertex> 6 {
+      1 -1 2.02964
+    }
+    <Vertex> 7 {
+      1 -1 0.0296403
+    }
+  }
+  <Polygon> {
+    <Normal> { -1 0 0 }
+    <VertexRef> { 0 1 2 3 <Ref> { Solid } }
+  }
+  <Polygon> {
+    <Normal> { 0 1 0 }
+    <VertexRef> { 1 4 5 2 <Ref> { Solid } }
+  }
+  <Polygon> {
+    <Normal> { 1 0 0 }
+    <VertexRef> { 4 6 7 5 <Ref> { Solid } }
+  }
+  <Polygon> {
+    <Normal> { 0 -1 0 }
+    <VertexRef> { 6 0 3 7 <Ref> { Solid } }
+  }
+  <Polygon> {
+    <Normal> { 0 0 -1 }
+    <VertexRef> { 3 2 5 7 <Ref> { Solid } }
+  }
+  <Polygon> {
+    <Normal> { 0 0 1 }
+    <VertexRef> { 6 4 1 0 <Ref> { Solid } }
+  }
+}

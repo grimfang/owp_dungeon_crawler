@@ -1,0 +1,46 @@
+<CoordinateSystem> { Z-Up }
+
+<Comment> {
+  "egg-trans -tbnall -o /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/gen/floor.egg /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/gen/floor.egg"
+}
+<Material> Material {
+  <Scalar> diffr { 0.198292 }
+  <Scalar> diffg { 0.64 }
+  <Scalar> diffb { 0.105593 }
+  <Scalar> emitr { 0 }
+  <Scalar> emitg { 0 }
+  <Scalar> emitb { 0 }
+  <Scalar> specr { 0.5 }
+  <Scalar> specg { 0.5 }
+  <Scalar> specb { 0.5 }
+  <Scalar> shininess { 12.5 }
+}
+<Group> Floor {
+  <Transform> {
+    <Matrix4> {
+      1 0 0 0
+      0 1 0 0
+      0 0 1 0
+      0 0 0 1
+    }
+  }
+  <VertexPool> Floor {
+    <Vertex> 0 {
+      -1 -1 0
+    }
+    <Vertex> 1 {
+      1 -1 0
+    }
+    <Vertex> 2 {
+      1 1 0
+    }
+    <Vertex> 3 {
+      -1 1 0
+    }
+  }
+  <Polygon> {
+    <Normal> { 0 0 1 }
+    <MRef> { Material }
+    <VertexRef> { 0 1 2 3 <Ref> { Floor } }
+  }
+}
