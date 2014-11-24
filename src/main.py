@@ -57,9 +57,16 @@ class Main(ShowBase):
         base.messenger.send("addLog", ["start the Server AI"])
         self.serverAI = ServerAIRepository()
         # TODO: change this to get the IP without a ping to G
-        ip = [(s.connect(('8.8.8.8', 80)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
-        base.messenger.send("addLog",
-            ["Server at: {} - Running - Version 1.0".format(ip)])
+        # EDIT: MJ-meo-dmt
+        #  - I 'tried' :P something... is this legal? :P
+        # i got a error when not connected to a network..
+        try:
+            ip = [(s.connect(('8.8.8.8', 80)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
+        
+        except:
+            ip = "127.0.0.1"
+            base.messenger.send("addLog",
+                ["Server at: {} - Running - Version 1.0".format(ip)])
 
     def stopHost(self):
         # TODO: How to stop the server???

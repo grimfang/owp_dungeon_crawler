@@ -2,6 +2,9 @@ import random
 import itertools
 import sys
 
+# Game
+from config import MAPFILENAME
+
 
 def _AStar(start, goal):
     def heuristic(a, b):
@@ -53,7 +56,7 @@ def _AStar(start, goal):
 
 def generate(cellsX, cellsY, cellSize=5):
     # 1. Divide the map into a grid of evenly sized cells.
-    txt = open("test.txt", "w")
+    txt = open(MAPFILENAME, "w")
 
     class Cell(object):
         def __init__(self, x, y, id):
@@ -164,7 +167,7 @@ def generate(cellsX, cellsY, cellSize=5):
     tilesY = cellsY * cellSize
     for x in range(tilesX):
         for y in range(tilesY):
-            tiles[(x, y)] = " "
+            tiles[(x, y)] = "x"
     for xy in itertools.chain.from_iterable(rooms):
         tiles[xy] = "."
 
@@ -196,5 +199,5 @@ def generate(cellsX, cellsY, cellSize=5):
 
 
 if __name__ == "__main__":
-    generate(5, 3, 10)
+    generate(2, 2, 10)
     

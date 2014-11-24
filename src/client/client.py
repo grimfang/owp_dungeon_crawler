@@ -75,6 +75,6 @@ class Client(DirectObject):
 
     def walkTo(self, pos):
         self.player.lookAt(pos)
-        #moveInterval = self.model.posInterval(1, pos)
-        #moveInterval.start()
-        self.player.setPos(pos)
+        moveInterval = self.player.posInterval(1, pos)
+        moveInterval.start()
+        #self.player.setPos(pos)

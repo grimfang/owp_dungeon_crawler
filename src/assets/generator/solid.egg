@@ -1,65 +1,83 @@
 <CoordinateSystem> { Z-Up }
 
 <Comment> {
-  "egg-trans -tbnall -o /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/gen/solid.egg /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/gen/solid.egg"
+  "egg-trans -tbnall -o /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/owp_dungeon_crawler/src/assets/generator/solid.egg /home/lext/development/Sources/GitProjects/grimfang_projects/dungeon_crawler/owp_dungeon_crawler/src/assets/generator/solid.egg"
 }
-<Group> Solid {
+<Material> Material {
+  <Scalar> diffr { 0.64 }
+  <Scalar> diffg { 0.310719 }
+  <Scalar> diffb { 0.482046 }
+  <Scalar> emitr { 0 }
+  <Scalar> emitg { 0 }
+  <Scalar> emitb { 0 }
+  <Scalar> specr { 0.5 }
+  <Scalar> specg { 0.5 }
+  <Scalar> specb { 0.5 }
+  <Scalar> shininess { 12.5 }
+}
+<Group> Cube {
   <Transform> {
     <Matrix4> {
-      1 0 0 0
-      0 1 0 0
+      0.5 0 0 0
+      0 0.5 0 0
       0 0 1 0
-      0 0 1.02964 1
+      0 0 0 1
     }
   }
-  <VertexPool> Solid {
+  <VertexPool> Cube {
     <Vertex> 0 {
-      -1 -1 2.02964
+      -0.5 -0.5 2
     }
     <Vertex> 1 {
-      -1 1 2.02964
+      -0.5 0.5 2
     }
     <Vertex> 2 {
-      -1 1 0.0296403
+      -0.5 0.5 0
     }
     <Vertex> 3 {
-      -1 -1 0.0296403
+      -0.5 -0.5 0
     }
     <Vertex> 4 {
-      1 1 2.02964
+      0.5 0.5 2
     }
     <Vertex> 5 {
-      1 1 0.0296403
+      0.5 0.5 0
     }
     <Vertex> 6 {
-      1 -1 2.02964
+      0.5 -0.5 2
     }
     <Vertex> 7 {
-      1 -1 0.0296403
+      0.5 -0.5 0
     }
   }
   <Polygon> {
     <Normal> { -1 0 0 }
-    <VertexRef> { 0 1 2 3 <Ref> { Solid } }
+    <MRef> { Material }
+    <VertexRef> { 0 1 2 3 <Ref> { Cube } }
   }
   <Polygon> {
     <Normal> { 0 1 0 }
-    <VertexRef> { 1 4 5 2 <Ref> { Solid } }
+    <MRef> { Material }
+    <VertexRef> { 1 4 5 2 <Ref> { Cube } }
   }
   <Polygon> {
     <Normal> { 1 0 0 }
-    <VertexRef> { 4 6 7 5 <Ref> { Solid } }
+    <MRef> { Material }
+    <VertexRef> { 4 6 7 5 <Ref> { Cube } }
   }
   <Polygon> {
     <Normal> { 0 -1 0 }
-    <VertexRef> { 6 0 3 7 <Ref> { Solid } }
+    <MRef> { Material }
+    <VertexRef> { 6 0 3 7 <Ref> { Cube } }
   }
   <Polygon> {
     <Normal> { 0 0 -1 }
-    <VertexRef> { 3 2 5 7 <Ref> { Solid } }
+    <MRef> { Material }
+    <VertexRef> { 3 2 5 7 <Ref> { Cube } }
   }
   <Polygon> {
     <Normal> { 0 0 1 }
-    <VertexRef> { 6 4 1 0 <Ref> { Solid } }
+    <MRef> { Material }
+    <VertexRef> { 6 4 1 0 <Ref> { Cube } }
   }
 }
