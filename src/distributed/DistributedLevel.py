@@ -20,7 +20,7 @@ from panda3d.core import CollisionHandlerQueue
 from panda3d.core import CollisionTraverser
 
 # Generator
-from generator.builder import Builder
+#from generator.builder import Builder
 
 
 # Distributed Level
@@ -35,7 +35,7 @@ class DistributedLevel(DistributedObject):
         DistributedObject.__init__(self, cr)
         #self.model = loader.loadModel('environment')
         #self.model.setZ(0)
-        self.builder = Builder(self, "map.txt", "development")
+        #self.builder = Builder(self, "map.txt", "development")
 
 
         plane = CollisionPlane(Plane(Vec3(0, 0, 1), Point3(0, 0, 0)))

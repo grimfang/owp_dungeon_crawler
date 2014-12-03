@@ -1,0 +1,36 @@
+=== Dungeon Crawler OWP ===
+
+Game Type: 2.5D Dungeon Crawler
+
+::Features::
+	Simple Items
+	Simple UI
+	Multiplayer
+	Random generated Levels
+
+::Player::
+	Movement: Point and Click
+	Camera Type: 2.5D Follow-Player-Topdown
+	Combat:
+		Realtime
+		Point and click
+		Only Melee?
+		-> Only play animations
+		-> Random hit calculation (no collision Detection necessary)
+
+::Levels::
+	Random generated dungeons
+	Base/"Home"-Level
+		-> like a guild house where the player takes on missions
+
+::GUI::
+	Main Menu
+		-> Host
+		-> Join (need IP)
+			-> Character Selection (Char model/color and Name)
+		-> Highscore
+		-> Quit
+
+::Audio::
+	Audio from the Aeon Project?
+	Sound effects

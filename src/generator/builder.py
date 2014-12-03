@@ -1,7 +1,7 @@
 
 
 # Dungeon builder.
-# this should be shared between the client and the server... 
+# this should be shared between the client and the server...
 # the only server side part is the generator.py that makes the map.txt file
 # passes it to the clients so that they could build it.
 # The server builds its own stripped down version.
@@ -17,10 +17,10 @@ import config
 
 #------------------------------------------#
 # Builder
-# Build the 3d level from the generated '2d', map.txt 
+# Build the 3d level from the generated '2d', map.txt
 #   (networked: map.txt supplied from the server)
 # Would be nice to be able to save maps... Could have the server generate,
-# map files when ever it has time to spare, or when its on high demand ofc.. 
+# map files when ever it has time to spare, or when its on high demand ofc..
 # But in a smart way...
 #-------------------------------------------#
 
@@ -38,7 +38,7 @@ class Builder():
 		self.levelFull = None
 
 		config.updateTilesets()
-		#self.tileset = self.getRandomTileset()
+		self.tileset = self.getRandomTileset()
 		self.parseMapFile()
 		self.levelNP = self.placeTiles()
 
@@ -71,7 +71,7 @@ class Builder():
 		tileSolid.reparentTo(self.levelFull)
 		tileFloor.reparentTo(self.levelFloor)
 		tilePortal.reparentTo(render)
-		
+
 		for y in self.grid:
 			for x in self.grid[y]:
 				#print self.grid[y][x], "@ position: ", y,x
@@ -97,7 +97,7 @@ class Builder():
 					tilePortal.copyTo(render) #reparentTo(render)
 					tilePortal.setPos(y, x, 0)
 
-		
+
 		#self.levelFloor.node().combineWith(self.levelFull.node())
 		x = self.levelFloor.output
 		print x #render.ls()
@@ -111,7 +111,7 @@ class Builder():
 		with open(self.mapFile) as f:
 			lines = [list(line.rstrip()) for line in f]
 			f.close()
-			
+
 		y = 0
 		for line in lines:
 			self.grid[y] = {}
@@ -121,7 +121,7 @@ class Builder():
 				x += 1
 
 			y += 1
-			
+
 
 	def getRandomTileset(self):
 		print "TILES", config.TILESETS
