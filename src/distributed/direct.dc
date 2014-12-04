@@ -30,6 +30,10 @@ dclass TimeManager: DistributedObject {
   serverTime(uint8 context, int32 timestamp);
 };
 
+dclass Builder: DistributedObject {
+  
+};
+
 dclass DistributedNode: DistributedObject {
   setX(int16 / 10) broadcast ram;
   setY(int16 / 10) broadcast ram;

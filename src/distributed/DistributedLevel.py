@@ -19,6 +19,9 @@ from panda3d.core import CollisionRay
 from panda3d.core import CollisionHandlerQueue
 from panda3d.core import CollisionTraverser
 
+# Generator
+from generator.builder import Builder
+
 
 # Distributed Level
 class DistributedLevel(DistributedObject):
@@ -30,8 +33,11 @@ class DistributedLevel(DistributedObject):
 
     def __init__(self, cr):
         DistributedObject.__init__(self, cr)
-        self.model = loader.loadModel('environment')
-        self.model.setZ(0)
+        #self.model = loader.loadModel('environment')
+        #self.model.setZ(0)
+        self.builder = Builder(self, "map.txt", "development")
+
+
         plane = CollisionPlane(Plane(Vec3(0, 0, 1), Point3(0, 0, 0)))
         cnode = CollisionNode('cnode')
         cnode.setIntoCollideMask(BitMask32.bit(1))

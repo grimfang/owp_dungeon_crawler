@@ -11,7 +11,10 @@ MAPFILENAME = "map.txt"
 tilesetsCfg = ConfigParser.RawConfigParser()
 tilesetsCfg.read('tilesets.cfg')
 
-idx = 0
-for section in tilesetsCfg.sections():
-	TILESETS[idx] = dict(tilesetsCfg.items(section))
-	idx += 1
+
+def updateTilesets():
+	idx = 0
+	for section in tilesetsCfg.sections():
+		TILESETS[idx] = dict(tilesetsCfg.items(section))
+		idx += 1
+		print section

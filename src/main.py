@@ -62,6 +62,8 @@ class Main(ShowBase):
         # i got a error when not connected to a network..
         try:
             ip = [(s.connect(('8.8.8.8', 80)), s.getsockname()[0], s.close()) for s in [socket.socket(socket.AF_INET, socket.SOCK_DGRAM)]][0][1]
+            base.messenger.send("addLog",
+                ["Server at: {} - Running - Version 1.0".format(ip)])
         
         except:
             ip = "127.0.0.1"
